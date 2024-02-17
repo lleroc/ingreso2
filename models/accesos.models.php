@@ -1,6 +1,7 @@
 <?php
 //TODO: Requerimientos 
 require_once('../config/conexion.php');
+require_once('./usuario.models.php');
 class Accesos
 {
     /*TODO: Procedimiento para sacar todos los registros*/
@@ -24,11 +25,20 @@ class Accesos
         $con->close();
     }
     /*TODO: Procedimiento para insertar */
-    public function Insertar($Ultimo, $Usuarios_idUsuarios, $IdTipoAcceso)
+    public function Insertar($Cedula, $IdTipoAcceso)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT into Accesos(Ultimo,Usuarios_idUsuarios,IdTipoAcceso) values ( '$Ultimo', $Usuarios_idUsuarios, '$IdTipoAcceso')";
+        //declarar a la usuarios y llamar procedimeinto unoCedula
+
+        $usuario = new Usuarios();
+        $datosusuario = $usuario->unoconCedula($Cedula);
+        $res = mysqli_fetch_assoc($datosusuario);
+        $usuariosId = $res["idUsuarios"];
+
+        $cadena = "INSERT into Accesos(Usuarios_idUsuarios,IdTipoAcceso) values ( $usuariosId, $IdTipoAcceso)";
+
+        echo $cadena;
 
         if (mysqli_query($con, $cadena)) {
             return "ok";

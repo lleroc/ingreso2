@@ -35,28 +35,11 @@ switch ($_GET["op"]) {
         break;
         /*TODO: Procedimiento para insertar */
     case 'insertar':
-
-        $Ultimo = $_POST["Ultimo"];
-        $Usuarios_idUsuarios = $_POST["combo_idUsuarios"];
+        $cedula = $_POST["Cedula"];
         $tipo = $_POST["tipo"];
         $datos = array();
-        $datos = $Accesos->Insertar($Ultimo, $Usuarios_idUsuarios, $tipo);
+        $datos = $Accesos->Insertar($cedula, $tipo);
         echo json_encode($datos);
         break;
         /*TODO: Procedimiento para actualizar */
-    case 'actualizar':
-        $idAccesos = $_POST["idAccesos"];
-        $Ultimo = $_POST["Ultimo"];
-        $Usuarios_idUsuarios = $_POST["Usuarios_idUsuarios"];
-        $datos = array();
-        $datos = $Accesos->Actualizar($idAccesos, $Ultimo, $Usuarios_idUsuarios);
-        echo json_encode($datos);
-        break;
-        /*TODO: Procedimiento para eliminar */
-    case 'eliminar':
-        $idAccesos = $_POST["idAccesos"];
-        $datos = array();
-        $datos = $Accesos->Eliminar($idAccesos);
-        echo json_encode($datos);
-        break;
 }

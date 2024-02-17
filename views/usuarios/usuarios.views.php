@@ -39,6 +39,10 @@
             <form id="form_usuarios" method="post">
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="Nombres">Cedula</label>
+                        <input type="text" name="Cedula" id="Cedula" class="form-control" placeholder="Ingrese su Cedula" require>
+                    </div>
+                    <div class="form-group">
                         <label for="Nombres">Nombres</label>
                         <input type="text" name="Nombres" id="Nombres" class="form-control" placeholder="Ingrese sus nombres" require>
                     </div>

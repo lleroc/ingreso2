@@ -24,12 +24,21 @@ class Usuarios
         return $datos;
         $con->close();
     }
-    /*TODO: Procedimiento para insertar */
-    public function Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $SucursalId, $idRoles)
+    public function unoconCedula($Cedula)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT into Usuarios(Nombres,Apellidos,Correo,Contrasenia, SucursalId) values ( '$Nombres', '$Apellidos', '$Correo', '$Contrasenia', $SucursalId)";
+        $cadena = "SELECT * FROM `Usuarios` WHERE `Cedula`='$Cedula'";
+        $datos = mysqli_query($con, $cadena);
+        return $datos;
+        $con->close();
+    }
+    /*TODO: Procedimiento para insertar */
+    public function Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $SucursalId, $idRoles, $Cedula)
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "INSERT into Usuarios(Nombres,Apellidos,Correo,Contrasenia, SucursalId, Cedula) values ( '$Nombres', '$Apellidos', '$Correo', '$Contrasenia', $SucursalId, '$Cedula')";
 
         if (mysqli_query($con, $cadena)) {
             $UsRoles = new Usuarios_Roles();
@@ -42,11 +51,11 @@ class Usuarios
     }
 
     /*TODO: Procedimiento para actualizar */
-    public function Actualizar($idUsuarios, $Nombres, $Apellidos, $Correo, $Contrasenia, $idRoles)
+    public function Actualizar($idUsuarios, $Nombres, $Apellidos, $Correo, $Contrasenia, $idRoles, $Cedula)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "update Usuarios set Nombres='$Nombres',Apellidos='$Apellidos',Correo='$Correo',Contrasenia='$Contrasenia',Roles_idRoles=$idRoles where idUsuarios= $idUsuarios";
+        $cadena = "update Usuarios set Nombres='$Nombres',Apellidos='$Apellidos',Correo='$Correo',Contrasenia='$Contrasenia',Roles_idRoles=$idRoles, Cedula='$Cedula' where idUsuarios= $idUsuarios";
         if (mysqli_query($con, $cadena)) {
             return ($idUsuarios);
         } else {

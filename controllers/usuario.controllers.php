@@ -32,8 +32,9 @@ switch ($_GET["op"]) {
         $Contrasenia = $_POST["contrasenia"];
         $SucursalId = $_POST["SucursalId"];
         $RolId = $_POST["RolId"];
+        $Cedula = $_POST["Cedula"];
         $datos = array();
-        $datos = $Usuarios->Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $SucursalId, $RolId);
+        $datos = $Usuarios->Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $SucursalId, $RolId, $Cedula);
         echo json_encode($datos);
         break;
         /*TODO: Procedimiento para actualizar */
@@ -44,8 +45,9 @@ switch ($_GET["op"]) {
         $Correo = $_POST["Correo"];
         $Contrasenia = $_POST["Contrasenia"];
         $Roles_idRoles = $_POST["Roles_idRoles"];
+        $Cedula = $_POST["Cedula"];
         $datos = array();
-        $datos = $Usuarios->Actualizar($idUsuarios, $Nombres, $Apellidos, $Correo, $Contrasenia, $Roles_idRoles);
+        $datos = $Usuarios->Actualizar($idUsuarios, $Nombres, $Apellidos, $Correo, $Contrasenia, $Roles_idRoles, $Cedula);
         echo json_encode($datos);
         break;
         /*TODO: Procedimiento para eliminar */
