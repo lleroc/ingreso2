@@ -55,8 +55,6 @@
               </a>
             </div>
             <!-- /Logo -->
-
-
             <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
               <div class="mb-3">
                 <label for="username" class="form-label">Cédula</label>
@@ -66,9 +64,7 @@
                 <label for="email" class="form-label">Tipo de Acceso</label>
                 <select name="tipo" id="tipo" class="form-control"></select>
               </div>
-
-
-              <button class="btn btn-primary d-grid w-100">Sign up</button>
+              <button class="btn btn-primary d-grid w-100">Aceptar</button>
             </form>
             <hr>
             <p class="text-center">
