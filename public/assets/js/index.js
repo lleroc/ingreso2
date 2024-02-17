@@ -66,3 +66,19 @@ var tiposacceso = () => {
   });
 };
 init();
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  const video = document.getElementById("video");
+  let stream;
+  navigator.mediaDevices
+    .getUserMedia({
+      video: true,
+    })
+    .then((mediaStream) => {
+      stream = mediaStream;
+      video.srcObject = mediaStream;
+    })
+    .catch((error) => {
+      alert("Error al acceder a la camara web");
+    });
+});

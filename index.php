@@ -39,24 +39,27 @@
 
 <body>
   <!-- Content -->
+  <form id="frm" class="mb-3" method="POST">
 
-  <div class="container-xxl">
-    <div class="authentication-wrapper authentication-basic container-p-y">
-      <div class="authentication-inner">
-        <!-- Register Card -->
-        <div class="card">
-          <div class="card-body">
-            <!-- Logo -->
-            <div class="app-brand justify-content-center">
-              <a href="index.html" class="app-brand-link gap-2">
-                <span class="app-brand-logo demo">
+    <video width="300" height="300" autoplay style="position: absolute; top:0px"></video>
 
-                </span>
-                <span class="app-brand-text demo text-body fw-bolder">Resistro Asistencia</span>
-              </a>
-            </div>
-            <!-- /Logo -->
-            <form id="frm" class="mb-3" method="POST">
+    <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register Card -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="index.html" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+
+                  </span>
+                  <span class="app-brand-text demo text-body fw-bolder">Resistro Asistencia</span>
+                </a>
+              </div>
+              <!-- /Logo -->
+
               <div class="mb-3">
                 <label for="username" class="form-label">Cédula</label>
                 <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Ingrese su número de cédula" autofocus required />
@@ -66,23 +69,23 @@
                 <select name="tipo" id="tipo" class="form-control"></select>
               </div>
               <button class="btn btn-primary d-grid w-100" type="submit">Aceptar</button>
-            </form>
-            <hr>
-            <p class="text-center">
 
-              <a href="login.php">
-                <span>Inicio de Sesión</span>
-              </a>
-            </p>
+              <hr>
+              <p class="text-center">
+
+                <a href="login.php">
+                  <span>Inicio de Sesión</span>
+                </a>
+              </p>
+            </div>
           </div>
+          <!-- Register Card -->
         </div>
-        <!-- Register Card -->
       </div>
     </div>
-  </div>
 
-  <!-- / Content -->
-
+    <!-- / Content -->
+  </form>
 
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
