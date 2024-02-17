@@ -1,7 +1,7 @@
 <?php
 //TODO: Requerimientos 
 require_once('../config/conexion.php');
-require_once('../models/Usuarios_Roles.models.php');
+
 class Usuarios
 {
     /*TODO: Procedimiento para sacar todos los registros*/
@@ -29,6 +29,7 @@ class Usuarios
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM `Usuarios` WHERE `Cedula`='$Cedula'";
+
         $datos = mysqli_query($con, $cadena);
         return $datos;
         $con->close();
@@ -41,6 +42,7 @@ class Usuarios
         $cadena = "INSERT into Usuarios(Nombres,Apellidos,Correo,Contrasenia, SucursalId, Cedula) values ( '$Nombres', '$Apellidos', '$Correo', '$Contrasenia', $SucursalId, '$Cedula')";
 
         if (mysqli_query($con, $cadena)) {
+            require_once('../models/Usuarios_Roles.models.php');
             $UsRoles = new Usuarios_Roles();
 
             return $UsRoles->Insertar(mysqli_insert_id($con), $idRoles);

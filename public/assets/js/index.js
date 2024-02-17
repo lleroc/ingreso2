@@ -1,32 +1,52 @@
 function init() {
-  $("#formAuthentication").on("submit", (e) => {
+  $("#frm").on("submit", (e) => {
     RegistroAsistencia(e);
   });
 }
+
 $().ready(() => {
   tiposacceso();
 });
+
 var RegistroAsistencia = (e) => {
   e.preventDefault();
-  var formulario = new FormData($("#formAuthentication")[0]);
+  var formulario = new FormData($("#frm")[0]);
+  alert("aqui");
   $.ajax({
-    url: "",
+    url: "controllers/usuario.controllers.php?op=unoconCedula",
     type: "post",
     data: formulario,
+    processData: false,
+    contentType: false,
     cache: false,
     success: (respuesta) => {
-      respuesta = JSON.parse(respuesta);
-      if (respuesta == "ok") {
-        //Swal.fire(Titulo, texto, tipo de alerta)
-        Swal.fire("Registro de Asistencia", "Se guardo con éxito", "success");
-      } else {
-        Swal.fire(
-          "Registro de Asistencia",
-          "Hubo un error al guardar",
-          "danger"
-        );
-      }
+      console.log(respuesta);
     },
+  }).done((usuarioId) => {
+    usuarioId = JSON.parse(usuarioId);
+    formulario.append("usuariosId", usuarioId.idUsuarios);
+    $.ajax({
+      url: "controllers/accesos.controllers.php?op=insertar",
+      type: "post",
+      data: formulario,
+      processData: false,
+      contentType: false,
+      cache: false,
+      success: (respuesta) => {
+        console.log(respuesta);
+        respuesta = JSON.parse(respuesta);
+        if (respuesta == "ok") {
+          //Swal.fire(Titulo, texto, tipo de alerta)
+          Swal.fire("Registro de Asistencia", "Se guardo con éxito", "success");
+        } else {
+          Swal.fire(
+            "Registro de Asistencia",
+            "Hubo un error al guardar",
+            "danger"
+          );
+        }
+      },
+    });
   });
 };
 
@@ -45,3 +65,4 @@ var tiposacceso = () => {
     });
   });
 };
+init();

@@ -24,6 +24,13 @@ switch ($_GET["op"]) {
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
+    case "unoconCedula":
+        $Cedula = $_POST["cedula"];
+        $datos = array();
+        $datos = $Usuarios->unoconCedula($Cedula);
+        $res = mysqli_fetch_assoc($datos);
+        echo json_encode($res);
+        break;
         /*TODO: Procedimiento para insertar */
     case 'insertar':
         $Nombres = $_POST["Nombres"];
