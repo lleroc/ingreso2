@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 15-02-2024 a las 23:37:47
+-- Tiempo de generación: 17-02-2024 a las 01:38:43
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 8.2.0
 
@@ -39,6 +39,14 @@ CREATE TABLE `Roles` (
   `Rol` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `Roles`
+--
+
+INSERT INTO `Roles` (`idRoles`, `Rol`) VALUES
+(5, 'ADMINISTRADOR'),
+(6, 'Control');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +64,14 @@ CREATE TABLE `Sucursales` (
   `Provincia` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `Sucursales`
+--
+
+INSERT INTO `Sucursales` (`SucursalId`, `Nombre`, `Direccion`, `Telefono`, `Correo`, `Parroquia`, `Canton`, `Provincia`) VALUES
+(5, 'Ambato', 'UNIANDES', '0987654321', 'correo@gmail.com', 'San Antonio', 'Ambato', 'Tungurahua'),
+(6, 'Salasaca', 'Salasaca', '0987654321', 'correosalasaca@gmail.com', 'Salasaca', 'Pelileo', 'Tungurahua');
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +82,16 @@ CREATE TABLE `Tipo_Acceso` (
   `IdTipoAcceso` int(11) NOT NULL,
   `Detalle` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Tipo_Acceso`
+--
+
+INSERT INTO `Tipo_Acceso` (`IdTipoAcceso`, `Detalle`) VALUES
+(1, 'Ingreso'),
+(2, 'Salida'),
+(3, 'Ingreso Almuerzo'),
+(4, 'Salida Almuerzo');
 
 -- --------------------------------------------------------
 
@@ -79,8 +105,20 @@ CREATE TABLE `Usuarios` (
   `Apellidos` text NOT NULL,
   `contrasenia` varchar(45) NOT NULL,
   `Correo` varchar(45) NOT NULL,
-  `SucursalId` int(11) NOT NULL
+  `SucursalId` int(11) NOT NULL,
+  `Cedula` varchar(17) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Usuarios`
+--
+
+INSERT INTO `Usuarios` (`idUsuarios`, `Nombres`, `Apellidos`, `contrasenia`, `Correo`, `SucursalId`, `Cedula`) VALUES
+(3, 'Luis', 'Llerena', '123', 'correo@gmail.com', 5, '1803971371'),
+(4, 'xxxx', 'xxxx', '123', 'otro@otro.com', 5, '1804233151'),
+(5, 'Luis Antonio', 'Llerena Ocaña', '123', 'lleroc@gmail.com', 6, '1801770569'),
+(6, 'kjhvkjhbk', 'bkjhbkjhbkjhb', '', '', 6, '1802491181'),
+(7, 'kjhvkjhbk', 'bkjhbkjhbkjhb', '', '', 6, '1803971730');
 
 -- --------------------------------------------------------
 
@@ -93,6 +131,16 @@ CREATE TABLE `Usuarios_Roles` (
   `Roles_idRoles` int(11) NOT NULL,
   `idUsuariosRoles` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Usuarios_Roles`
+--
+
+INSERT INTO `Usuarios_Roles` (`Usuarios_idUsuarios`, `Roles_idRoles`, `idUsuariosRoles`) VALUES
+(3, 5, 3),
+(4, 5, 4),
+(5, 6, 5),
+(7, 6, 7);
 
 --
 -- Índices para tablas volcadas
@@ -147,37 +195,37 @@ ALTER TABLE `Usuarios_Roles`
 -- AUTO_INCREMENT de la tabla `Accesos`
 --
 ALTER TABLE `Accesos`
-  MODIFY `idAccesos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `idAccesos` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `Roles`
 --
 ALTER TABLE `Roles`
-  MODIFY `idRoles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idRoles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `Sucursales`
 --
 ALTER TABLE `Sucursales`
-  MODIFY `SucursalId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `SucursalId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `Tipo_Acceso`
 --
 ALTER TABLE `Tipo_Acceso`
-  MODIFY `IdTipoAcceso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdTipoAcceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `Usuarios_Roles`
 --
 ALTER TABLE `Usuarios_Roles`
-  MODIFY `idUsuariosRoles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUsuariosRoles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
