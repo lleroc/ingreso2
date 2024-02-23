@@ -31,6 +31,13 @@ switch ($_GET["op"]) {
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
         break;
+    case "unoconCorreo":
+        $Correo = $_POST["Correo"];
+        $datos = array();
+        $datos = $Usuarios->unoconCorreo($Correo);
+        $res = mysqli_fetch_assoc($datos);
+        echo json_encode($res);
+        break;
         /*TODO: Procedimiento para insertar */
     case 'insertar':
         $Nombres = $_POST["Nombres"];

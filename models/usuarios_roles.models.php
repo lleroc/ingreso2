@@ -59,8 +59,9 @@ class Usuarios_Roles
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "DELETE FROM `Usuarios_Roles` WHERE `Usuarios_idUsuarios`= $Usuarios_idUsuarios";
+
         if (mysqli_query($con, $cadena)) {
-            return true;
+            return 'ok';
         } else {
             return false;
         }
